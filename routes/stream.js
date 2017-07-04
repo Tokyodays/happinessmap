@@ -30,6 +30,7 @@ router.get('/', function(req, res, next) {
   var io = require('socket.io').listen(server);
 
   io.sockets.on('connection', function(socket) {
+    console.log(socket);
     socket.emit('msg', {message: 'hello'}, function (data) {
       console.log('result: ' + data);
     });
@@ -43,12 +44,12 @@ router.get('/', function(req, res, next) {
     stream.on('data', function (data) {
       io.sockets.emit('msg', data.text);
       if(data.geo != null){
-      console.log(data);
+      //console.log(data);
       }
     });
   });
 
-  //res.render('index', { title: 'Express' });
+  res.render('index', { title: 'Express' });
 });
 
 module.exports = router;
