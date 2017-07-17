@@ -5,3 +5,9 @@ var app = express();
 var server = http.createServer(app);
 var router = express.Router();
 var util = require('util');
+
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'bbb' });
+});
+
+module.exports = router;
